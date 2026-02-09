@@ -1,0 +1,23 @@
+name: Check Rraenee Live
+
+on:
+  schedule:
+    - cron: "*/25 * * * *"
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Repo'yu çek
+        uses: actions/checkout@v4
+
+      - name: Bun kur
+        uses: oven-sh/setup-bun@v1
+
+      - name: Bun version
+        run: bun --version
+
+      - name: Test script çalıştır
+        run: bun run scripts/test.ts
